@@ -1,0 +1,22 @@
+SHELL=/bin/bash
+CC=/usr/bin/g++
+AR=/usr/bin/ar
+CD_CMD=cd
+COPY_CMD=/bin/cp
+DELETE_CMD=/bin/rm -f
+
+ROOT_PATH=/Users/brady/cppProjects/dnsServer/build
+BIN_DIR=$(ROOT_PATH)/bin
+LIB_DIR=$(ROOT_PATH)/lib
+INCLUDE_DIR=$(ROOT_PATH)/include
+
+LIBRARY_PATH=-L$(LIB_DIR)
+LIBRARY_PREFIX=lib
+LIBRARY_SUFFIX=.a
+
+INCLUDE_PATH=-I. -I.. -I$(INCLUDE_DIR)
+
+CCFLAGS=-g
+LDFLAGS=-static
+
+OBJ_EXTENSION=.o
