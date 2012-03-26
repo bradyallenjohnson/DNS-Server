@@ -1,6 +1,8 @@
 
 #include <list>
 
+#include <string.h> // bzero
+
 #include <DnsMessage.h>
 #include <DnsRequest.h>
 #include <DnsResponse.h>

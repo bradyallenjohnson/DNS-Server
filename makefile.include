@@ -5,7 +5,7 @@ CD_CMD=cd
 COPY_CMD=/bin/cp
 DELETE_CMD=/bin/rm -f
 
-ROOT_PATH=/Users/brady/cppProjects/dnsServer/build
+ROOT_PATH=/home/notroot/projects/dnsServer/build
 BIN_DIR=$(ROOT_PATH)/bin
 LIB_DIR=$(ROOT_PATH)/lib
 INCLUDE_DIR=$(ROOT_PATH)/include

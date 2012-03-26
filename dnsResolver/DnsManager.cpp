@@ -1,4 +1,6 @@
 
+#include <string.h> // memcpy
+
 #include <DnsManager.h>
 #include <DnsResolver.h>
 #include <DnsResponse.h>

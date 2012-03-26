@@ -4,6 +4,8 @@
 #include <stdexcept>
 #include <string>
 
+#include <stdlib.h> // atoi
+
 #include <dnsLoader/DnsLoader.h>
 #include <dnsLoader/DnsLoaderFormatTextImpl.h>
 #include <dnsLoader/DnsLoaderMediumFileImpl.h>

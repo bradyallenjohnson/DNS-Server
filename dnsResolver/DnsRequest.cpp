@@ -2,6 +2,8 @@
 #include <stdexcept>
 #include <string>
 
+#include <string.h> // memcmp
+
 #include <DnsMessage.h>
 #include <DnsRequest.h>
 

@@ -2,6 +2,8 @@
 #include <stdexcept>
 #include <string>
 
+#include <stdlib.h> // atoi
+
 #include <dnsUtils/Logger.h>
 
 #include <DnsMessage.h>
