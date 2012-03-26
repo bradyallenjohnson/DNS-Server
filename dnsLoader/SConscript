@@ -1,0 +1,9 @@
+Import('env')
+
+sourceFiles = ['DnsLoader.cpp',
+               'DnsLoaderFormat.cpp',
+               'DnsLoaderMedium.cpp',
+               'DnsLoaderFormatTextImpl.cpp',
+               'DnsLoaderMediumFileImpl.cpp']
+
+env.Library(target = 'dnsLoader', source = sourceFiles)

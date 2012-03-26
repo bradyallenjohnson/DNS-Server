@@ -1,0 +1,10 @@
+Import('env')
+
+sourceFiles = ['DnsManager.cpp',
+               'DnsMessage.cpp',
+               'DnsRequest.cpp',
+               'DnsResponse.cpp',
+               'DnsResolver.cpp',
+               'DnsResolverLocalImpl.cpp']
+
+env.Library(target = 'dnsResolver', source = sourceFiles)

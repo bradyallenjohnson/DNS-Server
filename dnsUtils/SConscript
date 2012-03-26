@@ -1,0 +1,7 @@
+Import('env')
+
+sourceFiles = ['ConfigFileParser.cpp',
+               'ConfigOptions.cpp',
+               'Logger.cpp']
+
+env.Library(target = 'dnsUtils', source = sourceFiles)

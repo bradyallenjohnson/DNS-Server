@@ -1,0 +1,7 @@
+Import('env')
+
+sourceFiles = ['ServerHandler.cpp',
+               'SocketServer.cpp',
+               'UdpSocketServerImpl.cpp']
+
+env.Library(target = 'socketServer', source = sourceFiles)
