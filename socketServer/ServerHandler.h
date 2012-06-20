@@ -2,7 +2,8 @@
 #ifndef SERVER_HANDLER_H
 #define SERVER_HANDLER_H
 
-#include <sys/types.h> 
+#include <arpa/inet.h>
+#include <sys/types.h>
 #include <netinet/in.h>
 
 //
@@ -18,6 +19,7 @@ class ServerHandler
 
     // Called when a message is read from a client
     virtual void handleMessage(char *msg, int msgLength, struct sockaddr_in *clientAddr) = 0;
+    virtual void handleTimeout() = 0;
 
     // Called to accept connections, default behavior is provided
     // WONT be used for now

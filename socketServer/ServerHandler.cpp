@@ -1,11 +1,11 @@
 
-#include <ServerHandler.h>
-#include <SocketServer.h>
+#include "ServerHandler.h"
+#include "SocketServer.h"
 
 ServerHandler::ServerHandler() :
-  clientAddr_(NULL),
+  responseMessageLength_(0),
   isReadable_(true),
-  responseMessageLength_(0)
+  clientAddr_(NULL)
 {
   responseMessage_ = new char[SocketServer::MAX_MESSAGE_LENGTH];
 }

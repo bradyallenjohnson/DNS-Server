@@ -1,39 +1,71 @@
+#include <iostream>
 
 #include <sys/socket.h>
 
-#include <stdexcept>
-
-#include <SocketServer.h>
-#include <UdpSocketServerImpl.h>
+#include "SocketServer.h"
+#include "UdpSocketServerImpl.h"
 
 UdpSocketServerImpl::UdpSocketServerImpl()
 {
 }
 
-UdpSocketServerImpl::UdpSocketServerImpl(int port) :
-  SocketServer(port)
+UdpSocketServerImpl::UdpSocketServerImpl(int port, int timeout_millis /*default 0*/) :
+  SocketServer(port, timeout_millis)
 {
 }
 
 // virtual
-void UdpSocketServerImpl::initializeSpecific()
+bool UdpSocketServerImpl::initializeSpecific()
 {
   sockFd_ = socket(AF_INET, SOCK_DGRAM, 0);
   if(sockFd_ < 0)
   {
-    throw runtime_error("Error initializing UDP socket");
+    std::cerr << "Error initializing UDP socket" << std::endl;
+    return false;
   }
 
   if(bind(sockFd_, (struct sockaddr *) &serverAddress_, sizeof(struct sockaddr_in)) < 0)
   {
-    throw runtime_error("Error binding socket");
+    std::cerr << "Error binding socket" << std::endl;
+    return false;
   }
 
-  if(logger_->isInfo())
+  if(isDebug())
   {
-    stringstream logMsg;
-    logMsg << "UDP server successfully bound to port: " << port_;
-    logger_->info(logMsg);
+    std::cout << "UDP server successfully bound to port: " << port_;
   }
+
+  return true;
+}
+
+// virtual
+int UdpSocketServerImpl::readSpecific(char *buffer)
+{
+  // TODO need to check if more bytes are avail to be read
+  int numBytesRead =
+        recvfrom(
+            sockFd_,
+            buffer,
+            MAX_MESSAGE_LENGTH,
+            0, // flags
+            (struct sockaddr *) &clientAddress_,
+            &clientAddrLen_);
+
+  return numBytesRead;
+}
+
+// virtual
+int UdpSocketServerImpl::writeSpecific(char *buffer, int bufLength)
+{
+  int numBytesWritten = 
+        sendto(
+            sockFd_,
+            buffer,
+            bufLength,
+            0, // flags
+            (struct sockaddr *) &clientAddress_,
+            clientAddrLen_);
+
+  return numBytesWritten;
 }
 
